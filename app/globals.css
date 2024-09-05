@@ -6,4 +6,8 @@
   html, body {
     @apply bg-background h-full;
   }
+
+  *{
+    color: rgba(84, 60, 151, 0.25)
+  }
 }
