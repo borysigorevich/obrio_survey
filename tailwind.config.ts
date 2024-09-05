@@ -22,6 +22,7 @@ const config: Config = {
 				primary: '2px 2px 6px 0 #543C973F',
 			},
 			textColor: {
+				'button-default': '#201F1F',
 				'button-active': '#FBFBFF'
 			}
 		},
