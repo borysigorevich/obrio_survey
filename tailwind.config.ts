@@ -10,10 +10,11 @@ const config: Config = {
 		extend: {
 			backgroundColor: {
 				background: '#FFF0F0',
-				button: '#EAEEF7'
+				button: '#EAEEF7',
 			},
 			backgroundImage: {
-				'button-active': 'linear-gradient(165.54deg, #141333 -33.39%, #202261 15.89%, #543C97 55.84%, #6939A2 74.96%)'
+				'button-active':
+					'linear-gradient(165.54deg, #141333 -33.39%, #202261 15.89%, #543C97 55.84%, #6939A2 74.96%)',
 			},
 			borderColor: {
 				border: '#E0E0E0',
@@ -23,8 +24,8 @@ const config: Config = {
 			},
 			textColor: {
 				'button-default': '#201F1F',
-				'button-active': '#FBFBFF'
-			}
+				'button-active': '#FBFBFF',
+			},
 		},
 	},
 	plugins: [],

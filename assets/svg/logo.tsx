@@ -4,7 +4,7 @@ type LogoProps = {
 	className?: string;
 };
 
-export const Logo = ({className}: LogoProps) => {
+export const Logo = ({ className }: LogoProps) => {
 	return (
 		<svg
 			className={className}
@@ -15,7 +15,7 @@ export const Logo = ({className}: LogoProps) => {
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 		>
-			<rect x="4.5" y="4" width="15" height="16" fill="url(#pattern0_1_1276)"/>
+			<rect x="4.5" y="4" width="15" height="16" fill="url(#pattern0_1_1276)" />
 			<defs>
 				<pattern
 					id="pattern0_1_1276"

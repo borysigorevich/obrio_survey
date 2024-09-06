@@ -1,12 +1,10 @@
-import {Button} from "@/components/button";
+import { Button } from '../components/ui/button';
 import { Header } from '@/components/header';
 
 export default function Home() {
 	return (
 		<main className="">
-			<Button>
-				Hello World
-			</Button>
+			<Button>Hello World</Button>
 		</main>
 	);
 }

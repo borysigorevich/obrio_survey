@@ -1,2 +1,2 @@
-export * from './logo'
-export * from './arrow-left'
+export * from './logo';
+export * from './arrow-left';

@@ -5,9 +5,9 @@ enum QuestionTypeEnum {
 }
 
 enum ScreenTypeEnum {
-	Question = "Question",
-	WhatIs = "WhatIs",
-	Info = "Info",
+	Question = 'Question',
+	WhatIs = 'WhatIs',
+	Info = 'Info',
 }
 
 type NextQuestionIdType = string | ((answers: Record<string, string>) => string);
@@ -15,18 +15,20 @@ type NextQuestionIdType = string | ((answers: Record<string, string>) => string)
 type AnswerType = {
 	id: string;
 	text: string;
-	nextQuestionId?: NextQuestionIdType
+	nextQuestionId?: NextQuestionIdType;
 };
 
 type SurveyConfigType = {
 	questions: { [key: string]: Question };
 };
 
-type TextType = {
-	text: string;
-} | {
-	text: (answers: { [key: string]: string }) => string;
-}
+type TextType =
+	| {
+			text: string;
+	  }
+	| {
+			text: (answers: { [key: string]: string }) => string;
+	  };
 
 type QuestionType = {
 	id: string;
@@ -35,14 +37,14 @@ type QuestionType = {
 	answers: AnswerType[];
 	description?: string;
 	required?: boolean;
-} & TextType
+} & TextType;
 
 type WhatIsScreenType = {
 	id: string;
 	screenType: ScreenTypeEnum.WhatIs;
 	description?: string;
 	answers: AnswerType[];
-} & TextType
+} & TextType;
 
 type Question = QuestionType | WhatIsScreenType;
 
@@ -171,98 +173,110 @@ const surveyConfig: SurveyConfigType = {
 			required: true,
 		},
 		q9: {
-			id: "q9",
-			text: "So how does it work?",
+			id: 'q9',
+			text: 'So how does it work?',
 			screenType: ScreenTypeEnum.WhatIs,
 			description:
-				"We analyze hundreds of data points to create your unique astrological blueprint. This is combined with AI to tailor-make your astrological insights, based on your answers. We’re going to change your relationship with astrology.", // Описание обязательно
+				'We analyze hundreds of data points to create your unique astrological blueprint. This is combined with AI to tailor-make your astrological insights, based on your answers. We’re going to change your relationship with astrology.', // Описание обязательно
 			answers: [
 				{
-					id: "q9_a1",
-					text: "Next",
+					id: 'q9_a1',
+					text: 'Next',
 					nextQuestionId: (answers: Record<string, string>) => {
-						if (answers["q7"] === "q7_a1") {
-							return "q10";
+						if (answers['q7'] === 'q7_a1') {
+							return 'q10';
 						} else {
-							return "q11";
+							return 'q11';
 						}
 					},
 				},
 			],
 		},
 		q10: {
-			id: "q10",
-			text: "What is most important to you?",
+			id: 'q10',
+			text: 'What is most important to you?',
 			screenType: ScreenTypeEnum.Question,
 			type: QuestionTypeEnum.SingleChoice,
 			answers: [
-				{ id: "q10_a1", text: "Success", nextQuestionId: "q15" },
-				{ id: "q10_a2", text: "Romance", nextQuestionId: "q15" },
-				{ id: "q10_a3", text: "Stability", nextQuestionId: "q15" },
-				{ id: "q10_a4", text: "Freedom", nextQuestionId: "q15" },
+				{ id: 'q10_a1', text: 'Success', nextQuestionId: 'q15' },
+				{ id: 'q10_a2', text: 'Romance', nextQuestionId: 'q15' },
+				{ id: 'q10_a3', text: 'Stability', nextQuestionId: 'q15' },
+				{ id: 'q10_a4', text: 'Freedom', nextQuestionId: 'q15' },
 			],
 		},
 		q11: {
-			id: "q11",
-			text: "Is emotional control tricky for you?",
+			id: 'q11',
+			text: 'Is emotional control tricky for you?',
 			screenType: ScreenTypeEnum.Question,
 			type: QuestionTypeEnum.SingleChoice,
 			answers: [
-				{ id: "q11_a1", text: "Yes", nextQuestionId: "q15" },
-				{ id: "q11_a2", text: "Sometimes", nextQuestionId: "q15" },
-				{ id: "q11_a3", text: "Rarely", nextQuestionId: "q15" },
-				{ id: "q11_a4", text: "Not at all", nextQuestionId: "q15" },
+				{ id: 'q11_a1', text: 'Yes', nextQuestionId: 'q15' },
+				{ id: 'q11_a2', text: 'Sometimes', nextQuestionId: 'q15' },
+				{ id: 'q11_a3', text: 'Rarely', nextQuestionId: 'q15' },
+				{ id: 'q11_a4', text: 'Not at all', nextQuestionId: 'q15' },
 			],
 		},
 		q12: {
-			id: "q12",
+			id: 'q12',
 			text: "What is your partner's gender?",
 			screenType: ScreenTypeEnum.Question,
 			type: QuestionTypeEnum.SingleChoice,
 			answers: [
-				{ id: "q12_a1", text: "Male", nextQuestionId: "q13" },
-				{ id: "q12_a2", text: "Female", nextQuestionId: "q13" },
+				{ id: 'q12_a1', text: 'Male', nextQuestionId: 'q13' },
+				{ id: 'q12_a2', text: 'Female', nextQuestionId: 'q13' },
 			],
 			required: true,
 		},
 		q13: {
-			id: "q13",
-			text: "Do you agree with the statement below?",
+			id: 'q13',
+			text: 'Do you agree with the statement below?',
 			screenType: ScreenTypeEnum.Question,
 			type: QuestionTypeEnum.SingleChoice,
 			description: `"My partner and I make sex a priority in our relationship"`,
 			answers: [
-				{ id: "q13_a1", text: "Strongly agree", nextQuestionId: "q14" },
-				{ id: "q13_a2", text: "Agree", nextQuestionId: "q14" },
-				{ id: "q13_a3", text: "Neutral", nextQuestionId: "q14" },
-				{ id: "q13_a4", text: "Disagree", nextQuestionId: "q14" },
-				{ id: "q13_a5", text: "Strongly disagree", nextQuestionId: "q14" },
+				{ id: 'q13_a1', text: 'Strongly agree', nextQuestionId: 'q14' },
+				{ id: 'q13_a2', text: 'Agree', nextQuestionId: 'q14' },
+				{ id: 'q13_a3', text: 'Neutral', nextQuestionId: 'q14' },
+				{ id: 'q13_a4', text: 'Disagree', nextQuestionId: 'q14' },
+				{ id: 'q13_a5', text: 'Strongly disagree', nextQuestionId: 'q14' },
 			],
 			required: true,
 		},
 		q14: {
-			id: "q14",
-			text: "When you think about your relationship goals, you feel...?",
+			id: 'q14',
+			text: 'When you think about your relationship goals, you feel...?',
 			screenType: ScreenTypeEnum.Question,
 			type: QuestionTypeEnum.SingleChoice,
 			answers: [
-				{ id: "q14_a1", text: "Optimistic! They are totally doable, with some guidance.", nextQuestionId: "q15" },
-				{ id: "q14_a2", text: "Cautious. I've struggled before, but I'm hopeful.", nextQuestionId: "q15" },
-				{ id: "q14_a3", text: "I'm feeling a little anxious, honestly.", nextQuestionId: "q15" },
+				{
+					id: 'q14_a1',
+					text: 'Optimistic! They are totally doable, with some guidance.',
+					nextQuestionId: 'q15',
+				},
+				{
+					id: 'q14_a2',
+					text: "Cautious. I've struggled before, but I'm hopeful.",
+					nextQuestionId: 'q15',
+				},
+				{
+					id: 'q14_a3',
+					text: "I'm feeling a little anxious, honestly.",
+					nextQuestionId: 'q15',
+				},
 			],
 			required: true,
 		},
 		q15: {
-			id: "q15",
-			text: "Where did you hear about us?",
+			id: 'q15',
+			text: 'Where did you hear about us?',
 			screenType: ScreenTypeEnum.Question,
 			type: QuestionTypeEnum.SingleChoice,
 			answers: [
-				{ id: "q15_a1", text: "Facebook", nextQuestionId: "end" },
-				{ id: "q15_a2", text: "Instagram", nextQuestionId: "end" },
-				{ id: "q15_a3", text: "Google", nextQuestionId: "end" },
-				{ id: "q15_a4", text: "Friend", nextQuestionId: "end" },
-				{ id: "q15_a5", text: "Other", nextQuestionId: "end" },
+				{ id: 'q15_a1', text: 'Facebook', nextQuestionId: 'end' },
+				{ id: 'q15_a2', text: 'Instagram', nextQuestionId: 'end' },
+				{ id: 'q15_a3', text: 'Google', nextQuestionId: 'end' },
+				{ id: 'q15_a4', text: 'Friend', nextQuestionId: 'end' },
+				{ id: 'q15_a5', text: 'Other', nextQuestionId: 'end' },
 			],
 			required: true,
 		},
