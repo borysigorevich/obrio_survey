@@ -1,4 +1,4 @@
-import { SetAnswerFnType } from '@/components/screens/screen/hooks';
+import { SetAnswerFnType } from '../render-screen/hooks';
 import { Button } from '@/components/ui';
 import { QuestionAnswerType } from '@/configs/surveyConfig';
 import React from 'react';
@@ -27,10 +27,7 @@ export const QuestionScreen = ({
 					<Button
 						key={answer.id}
 						onClick={() =>
-							handleAnswerClick({
-								answerId: answer.id,
-								answerText: answer.text,
-							})
+							handleAnswerClick(answer.id)
 						}
 					>
 						{answer.text}

@@ -1,5 +1,3 @@
-import { SurveyAnswersType } from '@/store/survey-answers-store';
-
 enum QuestionTypeEnum {
 	SingleChoice = 'SingleChoice',
 	MultipleChoice = 'MultipleChoice',
@@ -20,9 +18,9 @@ export type QuestionAnswerType = {
 );
 
 type SurveyConfigType = {
-	questions: { [key: string]: QuestionType };
+	questions: { [key: string]: ScreenType };
 };
-type QuestionTextPlaceholdersType = {
+export type QuestionTextPlaceholdersType = {
 	[key: string]: {
 		source: string;
 		values: {
@@ -31,16 +29,26 @@ type QuestionTextPlaceholdersType = {
 	};
 };
 
+type BasicScreenType = {
+	id: string;
+	text: string;
+	answers: QuestionAnswerType[];
+	description?: string;
+	placeholders?: QuestionTextPlaceholdersType;
+}
+
 type QuestionScreenType = {
 	id: string;
 	screenType: ScreenTypeEnum.Default;
 	text: string;
-	type: QuestionTypeEnum;
+	questionType: QuestionTypeEnum;
 	answers: QuestionAnswerType[];
 	description?: string;
 	required?: boolean;
 	placeholders?: QuestionTextPlaceholdersType;
-};
+} & {
+
+}
 
 type InfoScreenType = {
 	id: string;
@@ -51,14 +59,14 @@ type InfoScreenType = {
 	placeholders?: QuestionTextPlaceholdersType;
 };
 
-export type QuestionType = QuestionScreenType | InfoScreenType;
+export type ScreenType = QuestionScreenType | InfoScreenType;
 
 export const surveyConfig: SurveyConfigType = {
 	questions: {
 		q1: {
 			id: 'q1',
 			text: 'Select your gender:',
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{ id: 'q1_a1', text: 'Female', nextQuestionId: 'q2' },
@@ -69,7 +77,7 @@ export const surveyConfig: SurveyConfigType = {
 		q2: {
 			id: 'q2',
 			text: 'So we can get to know you better, tell us about your relationship status.',
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{ id: 'q2_a1', text: 'Single', nextQuestionId: 'q3' },
@@ -80,7 +88,7 @@ export const surveyConfig: SurveyConfigType = {
 		q3: {
 			id: 'q3',
 			text: 'Are you a single parent?',
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{ id: 'q3_a1', text: 'Yes', nextQuestionId: 'q5' },
@@ -91,7 +99,7 @@ export const surveyConfig: SurveyConfigType = {
 		q4: {
 			id: 'q4',
 			text: 'Are you a parent?',
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{ id: 'q4_a1', text: 'Yes', nextQuestionId: 'q6' },
@@ -118,7 +126,7 @@ export const surveyConfig: SurveyConfigType = {
 					},
 				},
 			},
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{
@@ -158,7 +166,7 @@ export const surveyConfig: SurveyConfigType = {
 					},
 				},
 			},
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{
@@ -187,7 +195,7 @@ export const surveyConfig: SurveyConfigType = {
 		q7: {
 			id: 'q7',
 			text: 'Do you tend to overthink?',
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{ id: 'q7_a1', text: 'Yes', nextQuestionId: 'q9' },
@@ -198,7 +206,7 @@ export const surveyConfig: SurveyConfigType = {
 		q8: {
 			id: 'q8',
 			text: 'Is your partner an introvert or extrovert?',
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{ id: 'q8_a1', text: 'Introvert', nextQuestionId: 'q12' },
@@ -229,7 +237,7 @@ export const surveyConfig: SurveyConfigType = {
 			id: 'q10',
 			text: 'What is most important to you?',
 			screenType: ScreenTypeEnum.Default,
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			answers: [
 				{ id: 'q10_a1', text: 'Success', nextQuestionId: 'q15' },
 				{ id: 'q10_a2', text: 'Romance', nextQuestionId: 'q15' },
@@ -241,7 +249,7 @@ export const surveyConfig: SurveyConfigType = {
 			id: 'q11',
 			text: 'Is emotional control tricky for you?',
 			screenType: ScreenTypeEnum.Default,
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			answers: [
 				{ id: 'q11_a1', text: 'Yes', nextQuestionId: 'q15' },
 				{ id: 'q11_a2', text: 'Sometimes', nextQuestionId: 'q15' },
@@ -253,7 +261,7 @@ export const surveyConfig: SurveyConfigType = {
 			id: 'q12',
 			text: "What is your partner's gender?",
 			screenType: ScreenTypeEnum.Default,
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			answers: [
 				{ id: 'q12_a1', text: 'Male', nextQuestionId: 'q13' },
 				{ id: 'q12_a2', text: 'Female', nextQuestionId: 'q13' },
@@ -264,7 +272,7 @@ export const surveyConfig: SurveyConfigType = {
 			id: 'q13',
 			text: 'Do you agree with the statement below?',
 			screenType: ScreenTypeEnum.Default,
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			description: `"My partner and I make sex a priority in our relationship"`,
 			answers: [
 				{ id: 'q13_a1', text: 'Strongly agree', nextQuestionId: 'q14' },
@@ -279,7 +287,7 @@ export const surveyConfig: SurveyConfigType = {
 			id: 'q14',
 			text: 'When you think about your relationship goals, you feel...?',
 			screenType: ScreenTypeEnum.Default,
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			answers: [
 				{
 					id: 'q14_a1',
@@ -303,7 +311,7 @@ export const surveyConfig: SurveyConfigType = {
 			id: 'q15',
 			text: 'Where did you hear about us?',
 			screenType: ScreenTypeEnum.Default,
-			type: QuestionTypeEnum.SingleChoice,
+			questionType: QuestionTypeEnum.SingleChoice,
 			answers: [
 				{ id: 'q15_a1', text: 'Poster or Billboard', nextQuestionId: 'end' },
 				{ id: 'q15_a2', text: 'Friend or Family', nextQuestionId: 'end' },
@@ -341,72 +349,4 @@ export const surveyConfig: SurveyConfigType = {
 			required: true,
 		},
 	},
-};
-
-export default surveyConfig;
-
-export const getSurveyConfigAsync = async (): Promise<SurveyConfigType> => {
-	return surveyConfig;
-};
-
-type PlaceholderConfig = {
-	source: string;
-	values: Record<string, string>;
-};
-
-type Placeholders = {
-	[key: string]: PlaceholderConfig;
-};
-
-export const generateTextWithPlaceholders = (
-	text: string,
-	placeholders: Placeholders = {},
-	answers: Record<string, string>
-): string => {
-	const placeholderRegex = /\{(\w+)\}/g;
-	debugger;
-	const generatedText = text.replace(placeholderRegex, (match, p1) => {
-		const placeholderConfig = placeholders[p1];
-		if (placeholderConfig) {
-			const answerId = answers[placeholderConfig.source];
-
-			const placeholderValue = placeholderConfig.values[answerId];
-
-			if (answerId && placeholderValue) {
-				return placeholderConfig.values[answerId];
-			} else if (placeholderValue === null) {
-				return '';
-			}
-		}
-
-		return match;
-	});
-
-	return generatedText;
-};
-
-type GetNextQuestionIdPropsType = {
-	surveyAnswers: SurveyAnswersType;
-	questionAnswers: QuestionAnswerType[];
-	answerId: string;
-};
-
-export const getNextQuestionId = ({
-	questionAnswers,
-	surveyAnswers,
-	answerId,
-}: GetNextQuestionIdPropsType) => {
-	const currentQuestionAnswer = questionAnswers.find(
-		(answer) => answer.id === answerId
-	);
-
-	if (!currentQuestionAnswer) return;
-
-	if ('dependsOn' in currentQuestionAnswer) {
-		return currentQuestionAnswer.nextQuestionId[
-			surveyAnswers[currentQuestionAnswer.dependsOn]
-		];
-	}
-
-	return currentQuestionAnswer.nextQuestionId;
 };
