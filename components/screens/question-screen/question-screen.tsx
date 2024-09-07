@@ -18,7 +18,7 @@ export const QuestionScreen = ({
 }: QuestionScreenProps) => {
 	return (
 		<div className={'px-3 mt-5 mx-auto w-full max-w-[330px]'}>
-			<h1 className={'text-2xl leading-[28px] font-bold text-primary'}>
+			<h1 className={'text-2xl leading-[28px] font-bold text-typography-8'}>
 				{questionTitle}
 			</h1>
 			{questionDesc && <h2 className={'mt-5'}>{questionDesc}</h2>}

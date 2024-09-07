@@ -9,7 +9,6 @@ export const useGenerateTextWithPlaceholders = (
 	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
 
 	const placeholderRegex = /\{(\w+)\}/g;
-	debugger;
 	const generatedText = text.replace(placeholderRegex, (match, p1) => {
 		const placeholderConfig = placeholders[p1];
 		if (placeholderConfig) {

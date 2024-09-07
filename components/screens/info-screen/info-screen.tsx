@@ -18,20 +18,20 @@ export const InfoScreen = ({
 }: InfoScreenProps) => {
 	return (
 		<div
-			className={'bg-purple-900 px-5 py-10 text-white mx-auto w-full max-w-[330px]'}
+			className={'mt-4 text-typography-1 mx-auto w-full max-w-[328px] text-center'}
 		>
-			<h1 className="text-2xl leading-[28px] font-bold mb-4 text-secondary">
+			<h1 className="text-2xl leading-[28px] font-bold text-typography-1">
 				{questionTitle}
 			</h1>
-			<p className="text-sm leading-[25.2px] mb-5">{questionDesc}</p>
-			<div className={'grid gap-5'}>
+			<p className="text-sm leading-[25.2px] mt-5 text-typography-1">{questionDesc}</p>
+			<div className={'grid gap-5 mt-10'}>
 				{answers.map((answer) => (
 					<Button
 						key={answer.id}
 						onClick={() =>
 							handleAnswerClick(answer.id)
 						}
-						className={'bg-secondary'}
+						className={'bg-typography-1 py-[14px] shadow-info text-primary-violet rounded-xl border-none text-lg leading-[21px]'}
 					>
 						{answer.text}
 					</Button>

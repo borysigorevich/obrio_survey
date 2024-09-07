@@ -11,7 +11,6 @@ const config: Config = {
 			backgroundColor: {
 				background: '#FFF0F0',
 				button: '#EAEEF7',
-				secondary: '#FBFBFF',
 			},
 			backgroundImage: {
 				'button-active':
@@ -22,12 +21,12 @@ const config: Config = {
 			},
 			boxShadow: {
 				primary: '2px 2px 6px 0 #543C973F',
+				info: '0px 4px 4px 0px rgba(216, 214, 214, 0.25)',
 			},
-			textColor: {
-				primary: '#201F1F',
-				'button-default': '#201F1F',
-				'button-active': '#FBFBFF',
-				secondary: '#FBFBFF',
+			colors: {
+				'typography-1': '#FBFBFF',
+				'typography-8': '#201F1F',
+				'primary-violet': '#6A3AA2',
 			},
 		},
 	},

@@ -39,7 +39,7 @@ type QuestionScreenType = {
 	description?: string;
 	required?: boolean;
 	placeholders?: QuestionTextPlaceholdersType;
-}
+};
 
 type InfoScreenType = {
 	id: string;
