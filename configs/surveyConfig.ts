@@ -19,6 +19,7 @@ export type QuestionAnswerType = {
 
 type SurveyConfigType = {
 	questions: { [key: string]: ScreenType };
+	firstQuestionId: string;
 };
 export type QuestionTextPlaceholdersType = {
 	[key: string]: {
@@ -29,14 +30,6 @@ export type QuestionTextPlaceholdersType = {
 	};
 };
 
-type BasicScreenType = {
-	id: string;
-	text: string;
-	answers: QuestionAnswerType[];
-	description?: string;
-	placeholders?: QuestionTextPlaceholdersType;
-}
-
 type QuestionScreenType = {
 	id: string;
 	screenType: ScreenTypeEnum.Default;
@@ -46,8 +39,6 @@ type QuestionScreenType = {
 	description?: string;
 	required?: boolean;
 	placeholders?: QuestionTextPlaceholdersType;
-} & {
-
 }
 
 type InfoScreenType = {
@@ -62,6 +53,7 @@ type InfoScreenType = {
 export type ScreenType = QuestionScreenType | InfoScreenType;
 
 export const surveyConfig: SurveyConfigType = {
+	firstQuestionId: 'q1',
 	questions: {
 		q1: {
 			id: 'q1',
