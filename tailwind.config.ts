@@ -26,6 +26,7 @@ const config: Config = {
 			colors: {
 				'typography-1': '#FBFBFF',
 				'typography-8': '#201F1F',
+				'typography-black': '#333',
 				'primary-violet': '#6A3AA2',
 			},
 		},

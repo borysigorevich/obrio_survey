@@ -101,7 +101,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q5: {
 			id: 'q5',
-			text: '{Gender} {ChildrenStatus} need a slightly different approach to find their perfect partner. Which statement best describes you?',
+			text: '{Gender} {ChildrenStatus} need a slightly different approach to improve their relationship. Which statement best describes you?',
 			placeholders: {
 				Gender: {
 					source: 'q1',
@@ -151,10 +151,10 @@ export const surveyConfig: SurveyConfigType = {
 					},
 				},
 				ChildrenStatus: {
-					source: 'q3',
+					source: 'q4',
 					values: {
-						q3_a1: 'with children',
-						q3_a2: null,
+						q4_a1: 'with children',
+						q4_a2: null,
 					},
 				},
 			},

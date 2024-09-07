@@ -19,7 +19,7 @@ export const InfoScreen = ({
 	return (
 		<div
 			className={
-				'mt-4 text-typography-1 px-4 lg:px-0 text-center'
+				'py-4 text-typography-1 px-4 lg:px-0 text-center'
 			}
 		>
 			<div className={'w-full max-w-[328px] mx-auto'}>
