@@ -1,4 +1,4 @@
-import { QuestionAnswerType } from '@/configs/surveyConfig';
+import { getNextQuestionId, QuestionAnswerType } from '@/configs/surveyConfig';
 import { SurveyAnswersType, useSurveyAnswersStore } from '@/store/survey-answers-store';
 import { useRouter } from 'next/navigation';
 
@@ -10,26 +10,24 @@ type UseSetAnswerArgsType = {
 
 export type SetAnswerFnType = (props: { answerId: string; answerText: string }) => void;
 
-export const useSetAnswer = ({
-	surveyAnswers,
-	questionAnswers,
-	questionId,
-}: UseSetAnswerArgsType) => {
+export const useSetAnswer = (
+	{
+		surveyAnswers,
+		questionAnswers,
+		questionId,
+	}: UseSetAnswerArgsType) => {
 	const setAnswer = useSurveyAnswersStore((state) => state.setAnswer);
 	const router = useRouter();
 
-	const handleSetAnswer: SetAnswerFnType = ({ answerId, answerText }) => {
+	const handleSetAnswer: SetAnswerFnType = ({ answerId }) => {
 		setAnswer(questionId, answerId);
-		const nextQuestionId = questionAnswers.find(
-			(answer) => answer.id === answerId
-		)?.nextQuestionId;
+		const nextQuestionId = getNextQuestionId({
+			answerId,
+			questionAnswers,
+			surveyAnswers,
+		});
 
-		if (typeof nextQuestionId === 'function') {
-			const nextQuestionIdValue = nextQuestionId(surveyAnswers);
-			router.push(`/${nextQuestionIdValue}`);
-		} else {
-			router.push(`/${nextQuestionId}`);
-		}
+		router.push(`/${nextQuestionId}`);
 	};
 
 	return handleSetAnswer;

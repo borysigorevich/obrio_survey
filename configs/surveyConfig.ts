@@ -1,3 +1,5 @@
+import { SurveyAnswersType } from '@/store/survey-answers-store';
+
 enum QuestionTypeEnum {
 	SingleChoice = 'SingleChoice',
 	MultipleChoice = 'MultipleChoice',
@@ -9,13 +11,10 @@ export enum ScreenTypeEnum {
 	Info = 'Info',
 }
 
-type NextQuestionIdType = string | ((answers: Record<string, string>) => string);
-
 export type QuestionAnswerType = {
 	id: string;
 	text: string;
-	nextQuestionId?: NextQuestionIdType;
-};
+} & ({ nextQuestionId: string } | { dependsOn: string; nextQuestionId: Record<string, string> });
 
 type SurveyConfigType = {
 	questions: { [key: string]: QuestionType };
@@ -152,7 +151,7 @@ export const surveyConfig: SurveyConfigType = {
 					source: 'q3',
 					values: {
 						q3_a1: 'with children',
-						q3_a2: null
+						q3_a2: null,
 					},
 				},
 			},
@@ -215,12 +214,10 @@ export const surveyConfig: SurveyConfigType = {
 				{
 					id: 'q9_a1',
 					text: 'Next',
-					nextQuestionId: (answers: Record<string, string>) => {
-						if (answers['q7'] === 'q7_a1') {
-							return 'q10';
-						} else {
-							return 'q11';
-						}
+					dependsOn: 'q7',
+					nextQuestionId: {
+						q7_a1: 'q10',
+						q7_a2: 'q11',
 					},
 				},
 			],
@@ -251,7 +248,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q12: {
 			id: 'q12',
-			text: "What is your partner's gender?",
+			text: 'What is your partner\'s gender?',
 			screenType: ScreenTypeEnum.Default,
 			type: QuestionTypeEnum.SingleChoice,
 			answers: [
@@ -288,12 +285,12 @@ export const surveyConfig: SurveyConfigType = {
 				},
 				{
 					id: 'q14_a2',
-					text: "Cautious. I've struggled before, but I'm hopeful.",
+					text: 'Cautious. I\'ve struggled before, but I\'m hopeful.',
 					nextQuestionId: 'q15',
 				},
 				{
 					id: 'q14_a3',
-					text: "I'm feeling a little anxious, honestly.",
+					text: 'I\'m feeling a little anxious, honestly.',
 					nextQuestionId: 'q15',
 				},
 			],
@@ -361,20 +358,20 @@ type Placeholders = {
 export const generateTextWithPlaceholders = (
 	text: string,
 	placeholders: Placeholders = {},
-	answers: Record<string, string>
+	answers: Record<string, string>,
 ): string => {
 	const placeholderRegex = /\{(\w+)\}/g;
-debugger
+	debugger
 	const generatedText = text.replace(placeholderRegex, (match, p1) => {
 		const placeholderConfig = placeholders[p1];
 		if (placeholderConfig) {
 			const answerId = answers[placeholderConfig.source];
 
-			const placeholderValue = placeholderConfig.values[answerId]
+			const placeholderValue = placeholderConfig.values[answerId];
 
 			if (answerId && placeholderValue) {
 				return placeholderConfig.values[answerId];
-			} else if(placeholderValue === null) {
+			} else if (placeholderValue === null) {
 				return '';
 			}
 		}
@@ -384,3 +381,22 @@ debugger
 
 	return generatedText;
 };
+
+type GetNextQuestionIdPropsType = {
+	surveyAnswers: SurveyAnswersType;
+	questionAnswers: QuestionAnswerType[];
+	answerId: string;
+}
+
+export const getNextQuestionId = ({questionAnswers, surveyAnswers, answerId}: GetNextQuestionIdPropsType) => {
+	const currentQuestionAnswer = questionAnswers.find((answer) => answer.id === answerId)
+
+	if(!currentQuestionAnswer) return
+
+	if('dependsOn' in currentQuestionAnswer) {
+		return currentQuestionAnswer.nextQuestionId[surveyAnswers[currentQuestionAnswer.dependsOn]];
+	}
+
+	return currentQuestionAnswer.nextQuestionId;
+
+}
