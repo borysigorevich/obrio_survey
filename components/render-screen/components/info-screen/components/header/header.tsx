@@ -1,5 +1,4 @@
-import { ArrowLeft } from '@/assets/svg';
-import { WhiteLogo } from '@/assets/svg/white-logo';
+import { ArrowLeft, WhiteLogo } from '@/assets/svg';
 import { InfoScreenType } from '@/configs/surveyConfig';
 import { useRouter } from 'next/navigation';
 import React from 'react';

@@ -21,7 +21,7 @@ export const QuestionScreen = ({
 	handleAnswerClick,
 }: QuestionScreenProps) => {
 	return (
-		<div className={'h-full w-full bg-background'}>
+		<div className={'min-h-full bg-background'}>
 			<Header parentQuestionId={parentQuestionId} />
 			<main className={'px-[15px] lg:px-0 py-5'}>
 				<div className={'max-w-[330px] mx-auto w-full'}>

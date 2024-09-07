@@ -20,7 +20,7 @@ export const InfoScreen = ({
 	parentQuestionId,
 }: InfoScreenProps) => {
 	return (
-		<div className={'w-full h-full bg-info-screen'}>
+		<div className={'min-h-full bg-info-screen'}>
 			<Header parentQuestionId={parentQuestionId} />
 			<main className={'py-4 text-typography-1 px-4 lg:px-0 text-center'}>
 				<div className={'w-full max-w-[328px] mx-auto'}>
@@ -36,7 +36,7 @@ export const InfoScreen = ({
 								key={answer.id}
 								onClick={() => handleAnswerClick(answer.id)}
 								className={
-									'bg-typography-1 py-[14px] shadow-info text-primary-violet rounded-xl border-none text-lg leading-[21px]'
+									'bg-typography-1 pt-[14px] pb-[15px] shadow-info text-primary-violet rounded-xl border-none text-lg leading-[21px] h-auto'
 								}
 							>
 								{answer.text}
