@@ -17,10 +17,6 @@ export type QuestionAnswerType = {
 	| { dependsOn: string; nextQuestionId: Record<string, string> }
 );
 
-type SurveyConfigType = {
-	questions: { [key: string]: ScreenType };
-	firstQuestionId: string;
-};
 export type QuestionTextPlaceholdersType = {
 	[key: string]: {
 		source: string;
@@ -53,6 +49,11 @@ export type InfoScreenType = {
 };
 
 export type ScreenType = QuestionScreenType | InfoScreenType;
+
+type SurveyConfigType = {
+	questions: { [key: string]: ScreenType };
+	firstQuestionId: string;
+};
 
 export const surveyConfig: SurveyConfigType = {
 	firstQuestionId: 'q1',

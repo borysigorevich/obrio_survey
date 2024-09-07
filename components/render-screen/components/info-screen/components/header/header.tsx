@@ -12,7 +12,7 @@ export const Header = ({ parentQuestionId }: HeaderProps) => {
 	const router = useRouter();
 
 	const navigateToParentQuestion = () => {
-		router.push(`/${parentQuestionId}`);
+		router.push(`/survey/${parentQuestionId}`);
 	};
 
 	const navigateToHome = () => {

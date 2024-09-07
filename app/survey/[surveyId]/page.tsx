@@ -9,9 +9,7 @@ type Props = {
 	};
 };
 
-// Next.js will invalidate the cache when a
-// request comes in, at most once every 10 minutes
-export const revalidate = 600;
+export const revalidate = 600; // 10 minutes
 
 export const generateStaticParams = async () => {
 	return Object.keys(surveyConfig.questions).map((surveyId) => ({

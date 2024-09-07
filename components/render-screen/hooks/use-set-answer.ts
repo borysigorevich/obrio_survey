@@ -21,7 +21,7 @@ export const useSetAnswer = (
 			surveyAnswers,
 		});
 
-		router.push(`/${nextQuestionId}`);
+		router.push(`/survey/${nextQuestionId}`);
 	};
 
 	return handleSetAnswer;
