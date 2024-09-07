@@ -1,13 +1,14 @@
-import { Header } from '@/components/render-screen/components/info-screen/compoents';
+import { Header } from '@/components/render-screen/components/info-screen/components';
 import { Button } from '@/components/ui';
-import { QuestionAnswerType } from '@/configs/surveyConfig';
+import { InfoScreenType } from '@/configs/surveyConfig';
 import React from 'react';
 import { SetAnswerFnType } from '../../hooks';
 
 type InfoScreenProps = {
-	questionTitle: string;
-	questionDesc?: string;
-	answers: QuestionAnswerType[];
+	questionTitle: InfoScreenType['text'];
+	questionDesc?: InfoScreenType['description'];
+	answers: InfoScreenType['answers'];
+	parentQuestionId: InfoScreenType['parentQuestionId'];
 	handleAnswerClick: SetAnswerFnType;
 };
 
@@ -16,10 +17,11 @@ export const InfoScreen = ({
 	questionDesc,
 	answers,
 	handleAnswerClick,
+	parentQuestionId,
 }: InfoScreenProps) => {
 	return (
 		<div className={'w-full h-full bg-info-screen'}>
-			<Header />
+			<Header parentQuestionId={parentQuestionId}/>
 			<main className={'py-4 text-typography-1 px-4 lg:px-0 text-center'}>
 				<div className={'w-full max-w-[328px] mx-auto'}>
 					<h1 className="text-2xl leading-[28px] font-bold text-typography-1">

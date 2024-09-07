@@ -1,14 +1,20 @@
 import React from 'react';
 
-export const WhiteLogo = () => {
+type WhiteLogoProps = {
+	onClick: () => void;
+}
+
+export const WhiteLogo = ({onClick}: WhiteLogoProps) => {
 	return (
 		<svg
+			onClick={onClick}
 			width="24"
 			height="24"
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 			xmlnsXlink="http://www.w3.org/1999/xlink"
+			className={'cursor-pointer'}
 		>
 			<rect x="4.5" y="4" width="15" height="16" fill="url(#pattern0_3430_316)" />
 			<defs>

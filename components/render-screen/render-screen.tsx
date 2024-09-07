@@ -23,6 +23,7 @@ export const RenderScreen = ({ question }: RenderScreenProps) => {
 				questionDesc={questionDesc}
 				answers={question.answers}
 				handleAnswerClick={handleAnswerClick}
+				parentQuestionId={question.parentQuestionId}
 			/>
 		);
 	}
@@ -33,6 +34,7 @@ export const RenderScreen = ({ question }: RenderScreenProps) => {
 			questionDesc={questionDesc}
 			answers={question.answers}
 			handleAnswerClick={handleAnswerClick}
+			parentQuestionId={question.parentQuestionId}
 		/>
 	);
 };

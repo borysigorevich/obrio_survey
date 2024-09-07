@@ -30,7 +30,7 @@ export type QuestionTextPlaceholdersType = {
 	};
 };
 
-type QuestionScreenType = {
+export type QuestionScreenType = {
 	id: string;
 	screenType: ScreenTypeEnum.Default;
 	text: string;
@@ -39,15 +39,17 @@ type QuestionScreenType = {
 	description?: string;
 	required?: boolean;
 	placeholders?: QuestionTextPlaceholdersType;
+	parentQuestionId: string | null
 };
 
-type InfoScreenType = {
+export type InfoScreenType = {
 	id: string;
 	screenType: ScreenTypeEnum.Info;
 	text: string;
 	description?: string;
 	answers: QuestionAnswerType[];
 	placeholders?: QuestionTextPlaceholdersType;
+	parentQuestionId: string | null
 };
 
 export type ScreenType = QuestionScreenType | InfoScreenType;
@@ -57,6 +59,7 @@ export const surveyConfig: SurveyConfigType = {
 	questions: {
 		q1: {
 			id: 'q1',
+			parentQuestionId: null,
 			text: 'Select your gender:',
 			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
@@ -68,6 +71,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q2: {
 			id: 'q2',
+			parentQuestionId: 'q1',
 			text: 'So we can get to know you better, tell us about your relationship status.',
 			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
@@ -79,6 +83,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q3: {
 			id: 'q3',
+			parentQuestionId: 'q2',
 			text: 'Are you a single parent?',
 			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
@@ -90,6 +95,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q4: {
 			id: 'q4',
+			parentQuestionId: 'q2',
 			text: 'Are you a parent?',
 			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
@@ -101,6 +107,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q5: {
 			id: 'q5',
+			parentQuestionId: 'q3',
 			text: '{Gender} {ChildrenStatus} need a slightly different approach to improve their relationship. Which statement best describes you?',
 			placeholders: {
 				Gender: {
@@ -141,6 +148,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q6: {
 			id: 'q6',
+			parentQuestionId: 'q4',
 			text: 'Single {Gender} {ChildrenStatus} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?',
 			placeholders: {
 				Gender: {
@@ -163,7 +171,7 @@ export const surveyConfig: SurveyConfigType = {
 			answers: [
 				{
 					id: 'q6_a1',
-					text: 'I was unhappy with low things were going in my relationship',
+					text: 'I was unhappy with how things were going in my relationship',
 					nextQuestionId: 'q8',
 				},
 				{
@@ -186,6 +194,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q7: {
 			id: 'q7',
+			parentQuestionId: 'q5',
 			text: 'Do you tend to overthink?',
 			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
@@ -197,6 +206,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q8: {
 			id: 'q8',
+			parentQuestionId: 'q6',
 			text: 'Is your partner an introvert or extrovert?',
 			questionType: QuestionTypeEnum.SingleChoice,
 			screenType: ScreenTypeEnum.Default,
@@ -209,6 +219,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q9: {
 			id: 'q9',
+			parentQuestionId: 'q7',
 			text: 'So how does it work?',
 			screenType: ScreenTypeEnum.Info,
 			description:
@@ -227,6 +238,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q10: {
 			id: 'q10',
+			parentQuestionId: 'q9',
 			text: 'What is most important to you?',
 			screenType: ScreenTypeEnum.Default,
 			questionType: QuestionTypeEnum.SingleChoice,
@@ -239,6 +251,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q11: {
 			id: 'q11',
+			parentQuestionId: 'q9',
 			text: 'Is emotional control tricky for you?',
 			screenType: ScreenTypeEnum.Default,
 			questionType: QuestionTypeEnum.SingleChoice,
@@ -251,6 +264,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q12: {
 			id: 'q12',
+			parentQuestionId: 'q8',
 			text: "What is your partner's gender?",
 			screenType: ScreenTypeEnum.Default,
 			questionType: QuestionTypeEnum.SingleChoice,
@@ -262,6 +276,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q13: {
 			id: 'q13',
+			parentQuestionId: 'q12',
 			text: 'Do you agree with the statement below?',
 			screenType: ScreenTypeEnum.Default,
 			questionType: QuestionTypeEnum.SingleChoice,
@@ -277,6 +292,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q14: {
 			id: 'q14',
+			parentQuestionId: 'q13',
 			text: 'When you think about your relationship goals, you feel...?',
 			screenType: ScreenTypeEnum.Default,
 			questionType: QuestionTypeEnum.SingleChoice,
@@ -301,6 +317,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q15: {
 			id: 'q15',
+			parentQuestionId: 'q14',
 			text: 'Where did you hear about us?',
 			screenType: ScreenTypeEnum.Default,
 			questionType: QuestionTypeEnum.SingleChoice,

@@ -1,14 +1,15 @@
-import { Header } from '@/components/render-screen/components/question-screen/compoents';
+import { Header } from '@/components/render-screen/components/question-screen/components';
 import { Button } from '@/components/ui';
-import { QuestionAnswerType } from '@/configs/surveyConfig';
+import { QuestionScreenType } from '@/configs/surveyConfig';
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { SetAnswerFnType } from '../../hooks';
 
 type QuestionScreenProps = {
-	questionTitle: string;
-	questionDesc?: string;
-	answers: QuestionAnswerType[];
+	questionTitle: QuestionScreenType['text'];
+	questionDesc?: QuestionScreenType['description'];
+	answers: QuestionScreenType['answers'];
+	parentQuestionId: QuestionScreenType['parentQuestionId'];
 	handleAnswerClick: SetAnswerFnType;
 };
 
@@ -16,17 +17,18 @@ export const QuestionScreen = ({
 	questionTitle,
 	questionDesc,
 	answers,
+	parentQuestionId,
 	handleAnswerClick,
 }: QuestionScreenProps) => {
 	return (
 		<div className={'h-full w-full bg-background'}>
-			<Header/>
+			<Header parentQuestionId={parentQuestionId}/>
 			<main className={'px-[15px] lg:px-0 py-5'}>
 				<div className={'max-w-[330px] mx-auto w-full'}>
 					<h1
 						className={cn(
 							'text-2xl leading-[28px] font-bold text-typography-8',
-							questionDesc && 'text-center text-typography-black',
+							questionDesc && 'text-center text-typography-black'
 						)}
 					>
 						{questionTitle}
