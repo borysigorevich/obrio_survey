@@ -1,5 +1,5 @@
-import { RenderScreen } from '@/components/screens/render-screen';
-import { surveyConfig, ScreenType } from '@/configs/surveyConfig';
+import { RenderScreen } from '@/components/render-screen';
+import { ScreenType, surveyConfig } from '@/configs/surveyConfig';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
@@ -26,11 +26,7 @@ const Page = async ({ params }: Props) => {
 
 	if (!question) return notFound();
 
-	return (
-		<main>
-			<RenderScreen question={question as ScreenType} />
-		</main>
-	);
+	return <RenderScreen question={question as ScreenType} />;
 };
 
 export default Page;

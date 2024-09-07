@@ -1,4 +1,4 @@
-import { getNextQuestionId } from '@/components/screens/render-screen/utils';
+import { getNextQuestionId } from '../utils';
 import { QuestionAnswerType } from '@/configs/surveyConfig';
 import { useSurveyAnswersStore } from '@/store/survey-answers-store';
 import { useRouter } from 'next/navigation';

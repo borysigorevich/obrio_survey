@@ -3,9 +3,8 @@ import { useSurveyAnswersStore } from '@/store/survey-answers-store';
 
 export const useGenerateTextWithPlaceholders = (
 	text: string,
-	placeholders: QuestionTextPlaceholdersType = {},
+	placeholders: QuestionTextPlaceholdersType = {}
 ): string => {
-
 	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
 
 	const placeholderRegex = /\{(\w+)\}/g;
