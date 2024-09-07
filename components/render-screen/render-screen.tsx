@@ -1,6 +1,9 @@
 'use client';
 import { InfoScreen, QuestionScreen } from '@/components/render-screen/components';
-import { useGenerateTextWithPlaceholders, useSetAnswer } from '@/components/render-screen/hooks';
+import {
+	useGenerateTextWithPlaceholders,
+	useSetAnswer,
+} from '@/components/render-screen/hooks';
 import { ScreenType, ScreenTypeEnum } from '@/configs/surveyConfig';
 
 type RenderScreenProps = {

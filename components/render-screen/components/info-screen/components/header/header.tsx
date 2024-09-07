@@ -17,7 +17,7 @@ export const Header = ({ parentQuestionId }: HeaderProps) => {
 
 	const navigateToHome = () => {
 		router.push('/');
-	}
+	};
 
 	return (
 		<header
@@ -32,7 +32,7 @@ export const Header = ({ parentQuestionId }: HeaderProps) => {
 					onClick={navigateToParentQuestion}
 				/>
 			)}
-			<WhiteLogo onClick={navigateToHome}/>
+			<WhiteLogo onClick={navigateToHome} />
 		</header>
 	);
 };

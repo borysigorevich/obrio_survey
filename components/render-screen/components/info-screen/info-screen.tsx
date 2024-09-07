@@ -21,7 +21,7 @@ export const InfoScreen = ({
 }: InfoScreenProps) => {
 	return (
 		<div className={'w-full h-full bg-info-screen'}>
-			<Header parentQuestionId={parentQuestionId}/>
+			<Header parentQuestionId={parentQuestionId} />
 			<main className={'py-4 text-typography-1 px-4 lg:px-0 text-center'}>
 				<div className={'w-full max-w-[328px] mx-auto'}>
 					<h1 className="text-2xl leading-[28px] font-bold text-typography-1">

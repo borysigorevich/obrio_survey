@@ -22,7 +22,7 @@ export const QuestionScreen = ({
 }: QuestionScreenProps) => {
 	return (
 		<div className={'h-full w-full bg-background'}>
-			<Header parentQuestionId={parentQuestionId}/>
+			<Header parentQuestionId={parentQuestionId} />
 			<main className={'px-[15px] lg:px-0 py-5'}>
 				<div className={'max-w-[330px] mx-auto w-full'}>
 					<h1

@@ -1,1 +1,1 @@
-export * from './getNextQuestionId'
+export * from './getNextQuestionId';

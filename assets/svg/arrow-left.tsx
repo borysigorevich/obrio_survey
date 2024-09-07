@@ -1,12 +1,12 @@
 import React from 'react';
 
 type ArrowLeftProps = {
-	fill?: string
-	className?: string
-	onClick?: () => void
-}
+	fill?: string;
+	className?: string;
+	onClick?: () => void;
+};
 
-export const ArrowLeft = ({fill = '#333', className, onClick}: ArrowLeftProps) => {
+export const ArrowLeft = ({ fill = '#333', className, onClick }: ArrowLeftProps) => {
 	return (
 		<svg
 			width="24"

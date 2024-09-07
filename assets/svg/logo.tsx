@@ -2,9 +2,9 @@ import React from 'react';
 
 type LogoProps = {
 	onClick?: () => void;
-}
+};
 
-export const Logo = ({onClick}: LogoProps) => {
+export const Logo = ({ onClick }: LogoProps) => {
 	return (
 		<svg
 			onClick={onClick}

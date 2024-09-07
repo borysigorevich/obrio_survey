@@ -16,7 +16,7 @@ export const Header = ({ parentQuestionId }: HeaderProps) => {
 
 	const navigateToHome = () => {
 		router.push('/');
-	}
+	};
 
 	return (
 		<header
@@ -24,13 +24,13 @@ export const Header = ({ parentQuestionId }: HeaderProps) => {
 				'px-[15px] py-2.5 lg:px-[165px] lg:py-[15px] relative flex justify-center'
 			}
 		>
-			{parentQuestionId &&
+			{parentQuestionId && (
 				<ArrowLeft
 					className={'absolute left-[15px] lg:left-[165px] cursor-pointer'}
 					onClick={navigateToParentQuestion}
 				/>
-			}
-			<Logo onClick={navigateToHome}/>
+			)}
+			<Logo onClick={navigateToHome} />
 		</header>
 	);
 };

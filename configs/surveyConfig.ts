@@ -35,7 +35,7 @@ export type QuestionScreenType = {
 	description?: string;
 	required?: boolean;
 	placeholders?: QuestionTextPlaceholdersType;
-	parentQuestionId: string | null
+	parentQuestionId: string | null;
 };
 
 export type InfoScreenType = {
@@ -45,7 +45,7 @@ export type InfoScreenType = {
 	description?: string;
 	answers: QuestionAnswerType[];
 	placeholders?: QuestionTextPlaceholdersType;
-	parentQuestionId: string | null
+	parentQuestionId: string | null;
 };
 
 export type ScreenType = QuestionScreenType | InfoScreenType;

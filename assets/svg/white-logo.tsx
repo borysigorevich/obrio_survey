@@ -2,9 +2,9 @@ import React from 'react';
 
 type WhiteLogoProps = {
 	onClick: () => void;
-}
+};
 
-export const WhiteLogo = ({onClick}: WhiteLogoProps) => {
+export const WhiteLogo = ({ onClick }: WhiteLogoProps) => {
 	return (
 		<svg
 			onClick={onClick}
