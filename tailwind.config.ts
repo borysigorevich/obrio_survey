@@ -11,6 +11,7 @@ const config: Config = {
 			backgroundColor: {
 				background: '#FFF0F0',
 				button: '#EAEEF7',
+				secondary: '#FBFBFF',
 			},
 			backgroundImage: {
 				'button-active':
@@ -23,8 +24,10 @@ const config: Config = {
 				primary: '2px 2px 6px 0 #543C973F',
 			},
 			textColor: {
+				primary: '#201F1F',
 				'button-default': '#201F1F',
 				'button-active': '#FBFBFF',
+				secondary: '#FBFBFF',
 			},
 		},
 	},

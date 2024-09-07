@@ -1,28 +1,31 @@
+
 import { SetAnswerFnType } from '@/components/screens/screen/hooks';
 import { Button } from '@/components/ui';
 import { QuestionAnswerType } from '@/configs/surveyConfig';
 import React from 'react';
 
-type QuestionScreenProps = {
+type InfoScreenProps = {
 	questionTitle: string;
 	questionDesc?: string;
 	answers: QuestionAnswerType[];
 	handleAnswerClick: SetAnswerFnType;
 };
 
-export const QuestionScreen = ({
+export const InfoScreen = ({
 	questionTitle,
 	questionDesc,
 	answers,
 	handleAnswerClick,
-}: QuestionScreenProps) => {
+}: InfoScreenProps) => {
 	return (
-		<div className={'px-3 mt-5 mx-auto w-full max-w-[330px]'}>
-			<h1 className={'text-2xl leading-[28px] font-bold text-primary'}>
+		<div
+			className={'bg-purple-900 px-5 py-10 text-white mx-auto w-full max-w-[330px]'}
+		>
+			<h1 className="text-2xl leading-[28px] font-bold mb-4 text-secondary">
 				{questionTitle}
 			</h1>
-			{questionDesc && <h2 className={'mt-5'}>{questionDesc}</h2>}
-			<div className={'mt-[30px] grid gap-5'}>
+			<p className="text-sm leading-[25.2px] mb-5">{questionDesc}</p>
+			<div className={'grid gap-5'}>
 				{answers.map((answer) => (
 					<Button
 						key={answer.id}
@@ -32,6 +35,7 @@ export const QuestionScreen = ({
 								answerText: answer.text,
 							})
 						}
+						className={'bg-secondary'}
 					>
 						{answer.text}
 					</Button>
