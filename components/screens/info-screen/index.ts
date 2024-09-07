@@ -1,1 +1,1 @@
-export * from './info-screen'
+export * from './info-screen';

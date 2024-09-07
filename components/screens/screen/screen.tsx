@@ -1,5 +1,9 @@
-import {SetAnswerFnType, useSetAnswer} from "@/components/screens/screen/hooks";
-import {generateTextWithPlaceholders, QuestionAnswerType, QuestionType} from '@/configs/surveyConfig';
+import { SetAnswerFnType, useSetAnswer } from '@/components/screens/screen/hooks';
+import {
+	generateTextWithPlaceholders,
+	QuestionAnswerType,
+	QuestionType,
+} from '@/configs/surveyConfig';
 import { SurveyAnswersType } from '@/store/survey-answers-store';
 import React from 'react';
 
@@ -14,12 +18,12 @@ type ScreenProps = {
 	}) => React.ReactNode;
 };
 
-export const Screen = ({
-	question,
-	surveyAnswers,
-	render,
-}: ScreenProps) => {
-	const questionTitle = generateTextWithPlaceholders(question.text, question.placeholders, surveyAnswers)
+export const Screen = ({ question, surveyAnswers, render }: ScreenProps) => {
+	const questionTitle = generateTextWithPlaceholders(
+		question.text,
+		question.placeholders,
+		surveyAnswers
+	);
 	const questionDesc = question.description;
 
 	const handleAnswerClick = useSetAnswer({

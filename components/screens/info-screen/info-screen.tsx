@@ -1,4 +1,3 @@
-
 import { SetAnswerFnType } from '@/components/screens/screen/hooks';
 import { Button } from '@/components/ui';
 import { QuestionAnswerType } from '@/configs/surveyConfig';

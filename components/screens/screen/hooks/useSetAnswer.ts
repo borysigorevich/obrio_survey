@@ -10,12 +10,11 @@ type UseSetAnswerArgsType = {
 
 export type SetAnswerFnType = (props: { answerId: string; answerText: string }) => void;
 
-export const useSetAnswer = (
-	{
-		surveyAnswers,
-		questionAnswers,
-		questionId,
-	}: UseSetAnswerArgsType) => {
+export const useSetAnswer = ({
+	surveyAnswers,
+	questionAnswers,
+	questionId,
+}: UseSetAnswerArgsType) => {
 	const setAnswer = useSurveyAnswersStore((state) => state.setAnswer);
 	const router = useRouter();
 

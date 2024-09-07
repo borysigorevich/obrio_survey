@@ -14,7 +14,10 @@ export enum ScreenTypeEnum {
 export type QuestionAnswerType = {
 	id: string;
 	text: string;
-} & ({ nextQuestionId: string } | { dependsOn: string; nextQuestionId: Record<string, string> });
+} & (
+	| { nextQuestionId: string }
+	| { dependsOn: string; nextQuestionId: Record<string, string> }
+);
 
 type SurveyConfigType = {
 	questions: { [key: string]: QuestionType };
@@ -248,7 +251,7 @@ export const surveyConfig: SurveyConfigType = {
 		},
 		q12: {
 			id: 'q12',
-			text: 'What is your partner\'s gender?',
+			text: "What is your partner's gender?",
 			screenType: ScreenTypeEnum.Default,
 			type: QuestionTypeEnum.SingleChoice,
 			answers: [
@@ -285,12 +288,12 @@ export const surveyConfig: SurveyConfigType = {
 				},
 				{
 					id: 'q14_a2',
-					text: 'Cautious. I\'ve struggled before, but I\'m hopeful.',
+					text: "Cautious. I've struggled before, but I'm hopeful.",
 					nextQuestionId: 'q15',
 				},
 				{
 					id: 'q14_a3',
-					text: 'I\'m feeling a little anxious, honestly.',
+					text: "I'm feeling a little anxious, honestly.",
 					nextQuestionId: 'q15',
 				},
 			],
@@ -358,10 +361,10 @@ type Placeholders = {
 export const generateTextWithPlaceholders = (
 	text: string,
 	placeholders: Placeholders = {},
-	answers: Record<string, string>,
+	answers: Record<string, string>
 ): string => {
 	const placeholderRegex = /\{(\w+)\}/g;
-	debugger
+	debugger;
 	const generatedText = text.replace(placeholderRegex, (match, p1) => {
 		const placeholderConfig = placeholders[p1];
 		if (placeholderConfig) {
@@ -386,17 +389,24 @@ type GetNextQuestionIdPropsType = {
 	surveyAnswers: SurveyAnswersType;
 	questionAnswers: QuestionAnswerType[];
 	answerId: string;
-}
+};
 
-export const getNextQuestionId = ({questionAnswers, surveyAnswers, answerId}: GetNextQuestionIdPropsType) => {
-	const currentQuestionAnswer = questionAnswers.find((answer) => answer.id === answerId)
+export const getNextQuestionId = ({
+	questionAnswers,
+	surveyAnswers,
+	answerId,
+}: GetNextQuestionIdPropsType) => {
+	const currentQuestionAnswer = questionAnswers.find(
+		(answer) => answer.id === answerId
+	);
 
-	if(!currentQuestionAnswer) return
+	if (!currentQuestionAnswer) return;
 
-	if('dependsOn' in currentQuestionAnswer) {
-		return currentQuestionAnswer.nextQuestionId[surveyAnswers[currentQuestionAnswer.dependsOn]];
+	if ('dependsOn' in currentQuestionAnswer) {
+		return currentQuestionAnswer.nextQuestionId[
+			surveyAnswers[currentQuestionAnswer.dependsOn]
+		];
 	}
 
 	return currentQuestionAnswer.nextQuestionId;
-
-}
+};

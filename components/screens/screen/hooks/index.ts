@@ -1,1 +1,1 @@
-export * from './useSetAnswer'
+export * from './useSetAnswer';

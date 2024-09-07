@@ -1,1 +1,1 @@
-export * from './render-screen'
+export * from './render-screen';

@@ -1,5 +1,5 @@
 import { RenderScreen } from '@/components/screens/render-screen';
-import surveyConfig, {getSurveyConfigAsync, QuestionType} from '@/configs/surveyConfig';
+import surveyConfig, { getSurveyConfigAsync, QuestionType } from '@/configs/surveyConfig';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
@@ -12,9 +12,9 @@ type Props = {
 const Page = async ({ params }: Props) => {
 	const { surveyId } = params;
 
-	const survey = await getSurveyConfigAsync()
+	const survey = await getSurveyConfigAsync();
 
-	const question = survey.questions[surveyId]
+	const question = survey.questions[surveyId];
 
 	if (!question) return notFound();
 

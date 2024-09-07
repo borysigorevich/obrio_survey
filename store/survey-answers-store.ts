@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type SurveyAnswersType = Record<string, string>
+export type SurveyAnswersType = Record<string, string>;
 
 type SurveyAnswersStoreType = {
 	answers: SurveyAnswersType;
