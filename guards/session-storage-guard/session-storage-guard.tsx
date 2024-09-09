@@ -8,11 +8,11 @@ import React, { PropsWithChildren, useEffect, useLayoutEffect, useState } from '
 
 export const SessionStorageGuard = ({ children }: PropsWithChildren) => {
 	const [isStorageLoaded, setIsStorageLoaded] = useState(false);
+	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
 	const params = useParams()
 	const router = useRouter();
 
 	useEffect(() => {
-		console.log('here');
 
 		const storageAnswers = sessionStorage.getItem(SURVEY_ANSWERS_STORE_KEY);
 		const firstQuestionId = surveyConfig.firstQuestionId;
@@ -27,9 +27,9 @@ export const SessionStorageGuard = ({ children }: PropsWithChildren) => {
 
 	}, []);
 
+	const hasAnswers = Object.keys(surveyAnswers).length > 0;
 
-
-	if(!isStorageLoaded) return <div className={'h-full w-full bg-background'}/>
+	if(!isStorageLoaded && !hasAnswers) return <div className={'h-full w-full bg-background'}/>
 
 	return <div className={'h-full bg-background'}>{children}</div>;
 };
