@@ -1,12 +1,13 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+export const SURVEY_ANSWERS_STORE_KEY = 'survey-answers-store';
+
 export type SurveyAnswersType = Record<string, string>;
 
 type SurveyAnswersStoreType = {
-	answers: SurveyAnswersType;
+	answers: SurveyAnswersType
 	setAnswer: (questionId: string, answer: string) => void;
-	getAnswer: (questionId: string) => string;
 };
 
 export const useSurveyAnswersStore = create<SurveyAnswersStoreType>()(
@@ -15,10 +16,9 @@ export const useSurveyAnswersStore = create<SurveyAnswersStoreType>()(
 			answers: {},
 			setAnswer: (questionId, answer) =>
 				set((state) => ({ answers: { ...state.answers, [questionId]: answer } })),
-			getAnswer: (questionId) => get().answers[questionId] || '',
 		}),
 		{
-			name: 'survey-answers-store',
+			name: SURVEY_ANSWERS_STORE_KEY,
 			storage: createJSONStorage(() => sessionStorage),
 		}
 	)

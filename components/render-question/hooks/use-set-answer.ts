@@ -1,3 +1,4 @@
+import { routes } from '@/routes';
 import { getNextQuestionId } from '../utils';
 import { QuestionAnswerType } from '@/configs/surveyConfig';
 import { useSurveyAnswersStore } from '@/store/survey-answers-store';
@@ -7,7 +8,8 @@ export type SetAnswerFnType = (answerId: string) => void;
 
 export const useSetAnswer = (
 	questionAnswers: QuestionAnswerType[],
-	questionId: string
+	questionId: string,
+	isLastScreen?: boolean
 ) => {
 	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
 	const setAnswer = useSurveyAnswersStore((state) => state.setAnswer);
@@ -15,13 +17,18 @@ export const useSetAnswer = (
 
 	const handleSetAnswer: SetAnswerFnType = (answerId) => {
 		setAnswer(questionId, answerId);
+		const currentQuestionAnswer = questionAnswers.find(
+			(answer) => answer.id === answerId
+		);
+
+		if(!currentQuestionAnswer) return;
+
 		const nextQuestionId = getNextQuestionId({
-			answerId,
-			questionAnswers,
+			currentQuestionAnswer,
 			surveyAnswers,
 		});
 
-		router.push(`/survey/${nextQuestionId}`);
+		router.push(`${routes.questions}/${nextQuestionId}`);
 	};
 
 	return handleSetAnswer;

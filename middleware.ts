@@ -1,13 +1,14 @@
 import { surveyConfig } from '@/configs/surveyConfig';
+import { routes } from '@/routes';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
 
-	if (!pathname.startsWith('/survey/')) {
+	if (!pathname.startsWith(`${routes.questions}/`)) {
 		const firstQuestionId = surveyConfig.firstQuestionId;
-		return NextResponse.redirect(new URL(`/survey/${firstQuestionId}`, request.url));
+		return NextResponse.redirect(new URL(`${routes.questions}/${firstQuestionId}`, request.url));
 	}
 }
 

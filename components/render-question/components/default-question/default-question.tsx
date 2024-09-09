@@ -1,25 +1,25 @@
-import { Header } from '@/components/render-screen/components/question-screen/components';
+import { Header } from '@/components/render-question/components/default-question/components';
 import { Button } from '@/components/ui';
-import { QuestionScreenType } from '@/configs/surveyConfig';
+import { DefaultQuestionType } from '@/configs/surveyConfig';
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { SetAnswerFnType } from '../../hooks';
 
-type QuestionScreenProps = {
-	questionTitle: QuestionScreenType['text'];
-	questionDesc?: QuestionScreenType['description'];
-	answers: QuestionScreenType['answers'];
-	parentQuestionId: QuestionScreenType['parentQuestionId'];
+type DefaultQuestionProps = {
+	title: DefaultQuestionType['title'];
+	description?: DefaultQuestionType['description'];
+	answers: DefaultQuestionType['answers'];
+	parentQuestionId: DefaultQuestionType['parentQuestionId'];
 	handleAnswerClick: SetAnswerFnType;
 };
 
-export const QuestionScreen = ({
-	questionTitle,
-	questionDesc,
+export const DefaultQuestion = ({
+	title,
+	description,
 	answers,
 	parentQuestionId,
 	handleAnswerClick,
-}: QuestionScreenProps) => {
+}: DefaultQuestionProps) => {
 	return (
 		<div className={'min-h-full bg-background'}>
 			<Header parentQuestionId={parentQuestionId} />
@@ -28,18 +28,18 @@ export const QuestionScreen = ({
 					<h1
 						className={cn(
 							'text-2xl leading-[28px] font-bold text-typography-8',
-							questionDesc && 'text-center text-typography-black'
+							description && 'text-center text-typography-black'
 						)}
 					>
-						{questionTitle}
+						{title}
 					</h1>
-					{questionDesc && (
+					{description && (
 						<h2
 							className={
 								'mt-5 text-typography-black font-bold text-lg text-center leading-[28px]'
 							}
 						>
-							{questionDesc}
+							{description}
 						</h2>
 					)}
 					<div className={'mt-[30px] grid gap-5'}>
@@ -48,7 +48,7 @@ export const QuestionScreen = ({
 								key={answer.id}
 								onClick={() => handleAnswerClick(answer.id)}
 							>
-								{answer.text}
+								{answer.title}
 							</Button>
 						))}
 					</div>

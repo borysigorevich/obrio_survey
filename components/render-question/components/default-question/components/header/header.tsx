@@ -1,17 +1,17 @@
 import { ArrowLeft, Logo } from '@/assets/svg';
-import { QuestionScreenType } from '@/configs/surveyConfig';
+import { DefaultQuestionType } from '@/configs/surveyConfig';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
 type HeaderProps = {
-	parentQuestionId: QuestionScreenType['parentQuestionId'];
+	parentQuestionId: DefaultQuestionType['parentQuestionId'];
 };
 
 export const Header = ({ parentQuestionId }: HeaderProps) => {
 	const router = useRouter();
 
 	const navigateToParentQuestion = () => {
-		router.push(`/survey/${parentQuestionId}`);
+		router.back()
 	};
 
 	const navigateToHome = () => {

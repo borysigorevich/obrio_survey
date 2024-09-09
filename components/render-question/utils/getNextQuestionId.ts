@@ -3,19 +3,13 @@ import { SurveyAnswersType } from '@/store/survey-answers-store';
 
 type GetNextQuestionIdPropsType = {
 	surveyAnswers: SurveyAnswersType;
-	questionAnswers: QuestionAnswerType[];
-	answerId: string;
+	currentQuestionAnswer: QuestionAnswerType;
 };
 
 export const getNextQuestionId = ({
-	questionAnswers,
+	currentQuestionAnswer,
 	surveyAnswers,
-	answerId,
 }: GetNextQuestionIdPropsType) => {
-	const currentQuestionAnswer = questionAnswers.find(
-		(answer) => answer.id === answerId
-	);
-
 	if (!currentQuestionAnswer) return;
 
 	if ('dependsOn' in currentQuestionAnswer) {

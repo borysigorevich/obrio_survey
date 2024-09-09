@@ -1,34 +1,34 @@
-import { Header } from '@/components/render-screen/components/info-screen/components';
+import { Header } from '@/components/render-question/components/info-question/components';
 import { Button } from '@/components/ui';
-import { InfoScreenType } from '@/configs/surveyConfig';
+import { InfoQuestionType } from '@/configs/surveyConfig';
 import React from 'react';
 import { SetAnswerFnType } from '../../hooks';
 
-type InfoScreenProps = {
-	questionTitle: InfoScreenType['text'];
-	questionDesc?: InfoScreenType['description'];
-	answers: InfoScreenType['answers'];
-	parentQuestionId: InfoScreenType['parentQuestionId'];
+type InfoQuestionProps = {
+	title: InfoQuestionType['title'];
+	description?: InfoQuestionType['description'];
+	answers: InfoQuestionType['answers'];
+	parentQuestionId: InfoQuestionType['parentQuestionId'];
 	handleAnswerClick: SetAnswerFnType;
 };
 
-export const InfoScreen = ({
-	questionTitle,
-	questionDesc,
+export const InfoQuestion = ({
+	title,
+	description,
 	answers,
 	handleAnswerClick,
 	parentQuestionId,
-}: InfoScreenProps) => {
+}: InfoQuestionProps) => {
 	return (
 		<div className={'min-h-full bg-info-screen'}>
 			<Header parentQuestionId={parentQuestionId} />
 			<main className={'py-4 text-typography-1 px-4 lg:px-0 text-center'}>
 				<div className={'w-full max-w-[328px] mx-auto'}>
 					<h1 className="text-2xl leading-[28px] font-bold text-typography-1">
-						{questionTitle}
+						{title}
 					</h1>
 					<p className="text-sm leading-[25.2px] mt-5 text-typography-1">
-						{questionDesc}
+						{description}
 					</p>
 					<div className={'grid gap-5 mt-10'}>
 						{answers.map((answer) => (
@@ -39,7 +39,7 @@ export const InfoScreen = ({
 									'bg-typography-1 pt-[14px] pb-[15px] shadow-info text-primary-violet rounded-xl border-none text-lg leading-[21px] h-auto'
 								}
 							>
-								{answer.text}
+								{answer.title}
 							</Button>
 						))}
 					</div>
