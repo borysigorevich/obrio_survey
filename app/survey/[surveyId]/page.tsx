@@ -1,6 +1,6 @@
 import { RenderScreen } from '@/components/render-screen';
 import { ScreenType, surveyConfig } from '@/configs/surveyConfig';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 type Props = {
@@ -22,7 +22,7 @@ const Page = async ({ params }: Props) => {
 
 	const question = surveyConfig.questions[surveyId];
 
-	if (!question) return notFound();
+	if (!question) return redirect(`/survey/${surveyConfig.firstQuestionId}`);
 
 	return <RenderScreen question={question as ScreenType} />;
 };
