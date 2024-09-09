@@ -1,4 +1,4 @@
-enum QuestionTypeEnum {
+export enum QuestionTypeEnum {
 	SingleChoice = 'SingleChoice',
 	MultipleChoice = 'MultipleChoice',
 	Text = 'Text',

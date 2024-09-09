@@ -1,5 +1,5 @@
 'use client';
-import { InfoQuestion, DefaultQuestion } from '@/components/render-question/components';
+import { DefaultQuestion, InfoQuestion } from '@/components/render-question/components';
 import {
 	useGenerateTextWithPlaceholders,
 	useSetAnswer,
@@ -11,12 +11,11 @@ type RenderScreenProps = {
 };
 
 export const RenderQuestion = ({ question }: RenderScreenProps) => {
-	const handleAnswerClick = useSetAnswer(question.answers, question.id, question.isLastQuestion);
-
-	const title = useGenerateTextWithPlaceholders(
-		question.title,
-		question.placeholders
+	const handleAnswerClick = useSetAnswer(
+		question
 	);
+
+	const title = useGenerateTextWithPlaceholders(question.title, question.placeholders);
 	const description = question.description;
 
 	const sharedProps = {
@@ -28,16 +27,8 @@ export const RenderQuestion = ({ question }: RenderScreenProps) => {
 	};
 
 	if (question.screenType === ScreenTypeEnum.Info) {
-		return (
-			<InfoQuestion
-				{...sharedProps}
-			/>
-		);
+		return <InfoQuestion {...sharedProps} />;
 	}
 
-	return (
-		<DefaultQuestion
-			{...sharedProps}
-		/>
-	);
+	return <DefaultQuestion {...sharedProps} />;
 };
