@@ -30,19 +30,22 @@ export const InfoQuestion = ({
 					<p className="text-sm leading-[25.2px] mt-5 text-typography-1">
 						{description}
 					</p>
-					<div className={'grid gap-5 mt-10'}>
+					<ul className={'grid gap-5 mt-10'}>
 						{answers.map((answer) => (
-							<Button
-								key={answer.id}
-								onClick={() => handleAnswerClick(answer.id)}
-								className={
-									'bg-typography-1 pt-[14px] pb-[15px] shadow-info text-primary-violet rounded-xl border-none text-lg leading-[21px] h-auto'
-								}
+							<li key={answer.id}
+								className={'w-full'}
 							>
-								{answer.title}
-							</Button>
+								<Button
+									onClick={() => handleAnswerClick(answer.id)}
+									className={
+										'bg-typography-1 pt-[14px] pb-[15px] w-full shadow-info text-primary-violet rounded-xl border-none text-lg leading-[21px] h-auto'
+									}
+								>
+									{answer.title}
+								</Button>
+							</li>
 						))}
-					</div>
+					</ul>
 				</div>
 			</main>
 		</div>

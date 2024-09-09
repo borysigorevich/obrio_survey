@@ -1,12 +1,10 @@
 import { QuestionTextPlaceholdersType } from '@/configs/surveyConfig';
-import { useSurveyAnswersStore } from '@/store/survey-answers-store';
 
-export const useGenerateTextWithPlaceholders = (
+export const generateTextWithPlaceholders = (
+	surveyAnswers: Record<string, string>,
 	text: string,
 	placeholders: QuestionTextPlaceholdersType = {}
 ): string => {
-	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
-
 	const placeholderRegex = /\{(\w+)\}/g;
 	const generatedText = text.replace(placeholderRegex, (match, p1) => {
 		const placeholderConfig = placeholders[p1];

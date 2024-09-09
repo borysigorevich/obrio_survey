@@ -1,21 +1,24 @@
 'use client';
 import { DefaultQuestion, InfoQuestion } from '@/components/render-question/components';
 import {
-	useGenerateTextWithPlaceholders,
+	generateTextWithPlaceholders,
 	useSetAnswer,
 } from '@/components/render-question/hooks';
 import { QuestionType, ScreenTypeEnum } from '@/configs/surveyConfig';
+import { useSurveyAnswersStore } from '@/store/survey-answers-store';
 
 type RenderScreenProps = {
 	question: QuestionType;
 };
 
 export const RenderQuestion = ({ question }: RenderScreenProps) => {
+	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
+
 	const handleAnswerClick = useSetAnswer(
 		question
 	);
 
-	const title = useGenerateTextWithPlaceholders(question.title, question.placeholders);
+	const title = generateTextWithPlaceholders(surveyAnswers, question.title, question.placeholders);
 	const description = question.description;
 
 	const sharedProps = {

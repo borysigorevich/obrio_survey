@@ -42,16 +42,18 @@ export const DefaultQuestion = ({
 							{description}
 						</h2>
 					)}
-					<div className={'mt-[30px] grid gap-5'}>
+					<ul className={'mt-[30px] grid gap-5'}>
 						{answers.map((answer) => (
-							<Button
-								key={answer.id}
-								onClick={() => handleAnswerClick(answer.id)}
-							>
-								{answer.title}
-							</Button>
+							<li key={answer.id} className={'w-full'}>
+								<Button
+									className={'w-full'}
+									onClick={() => handleAnswerClick(answer.id)}
+								>
+									{answer.title}
+								</Button>
+							</li>
 						))}
-					</div>
+					</ul>
 				</div>
 			</main>
 		</div>
