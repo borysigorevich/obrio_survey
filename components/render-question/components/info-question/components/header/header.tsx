@@ -11,7 +11,7 @@ export const Header = ({ parentQuestionId }: HeaderProps) => {
 	const router = useRouter();
 
 	const navigateToParentQuestion = () => {
-		router.back()
+		router.back();
 	};
 
 	const navigateToHome = () => {

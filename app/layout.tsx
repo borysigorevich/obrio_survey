@@ -17,7 +17,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={openSans.className}><SessionStorageGuard>{children}</SessionStorageGuard></body>
+			<body className={openSans.className}>
+				<SessionStorageGuard>{children}</SessionStorageGuard>
+			</body>
 		</html>
 	);
 }

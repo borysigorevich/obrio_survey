@@ -32,9 +32,7 @@ export const InfoQuestion = ({
 					</p>
 					<ul className={'grid gap-5 mt-10'}>
 						{answers.map((answer) => (
-							<li key={answer.id}
-								className={'w-full'}
-							>
+							<li key={answer.id} className={'w-full'}>
 								<Button
 									onClick={() => handleAnswerClick(answer.id)}
 									className={

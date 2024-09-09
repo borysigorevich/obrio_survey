@@ -37,15 +37,15 @@ type BaseQuestionType = {
 	placeholders?: QuestionTextPlaceholdersType;
 	parentQuestionId: string | null;
 	isLastQuestion?: boolean;
-}
+};
 
 export type DefaultQuestionType = BaseQuestionType & {
 	screenType: ScreenTypeEnum.Default;
-}
+};
 
 export type InfoQuestionType = BaseQuestionType & {
 	screenType: ScreenTypeEnum.Info;
-}
+};
 
 export type QuestionType = DefaultQuestionType | InfoQuestionType;
 
@@ -356,7 +356,7 @@ export const surveyConfig: SurveyConfigType = {
 				{ id: 'q15_a16', title: 'Other', nextQuestionId: 'end' },
 			],
 			required: true,
-			isLastQuestion: true
+			isLastQuestion: true,
 		},
 	},
 };

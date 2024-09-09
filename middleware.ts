@@ -8,7 +8,9 @@ export function middleware(request: NextRequest) {
 
 	if (!pathname.startsWith(`${routes.questions}/`) && pathname !== routes.results) {
 		const firstQuestionId = surveyConfig.firstQuestionId;
-		return NextResponse.redirect(new URL(`${routes.questions}/${firstQuestionId}`, request.url));
+		return NextResponse.redirect(
+			new URL(`${routes.questions}/${firstQuestionId}`, request.url)
+		);
 	}
 }
 

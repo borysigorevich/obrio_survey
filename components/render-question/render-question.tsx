@@ -14,11 +14,13 @@ type RenderScreenProps = {
 export const RenderQuestion = ({ question }: RenderScreenProps) => {
 	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
 
-	const handleAnswerClick = useSetAnswer(
-		question
-	);
+	const handleAnswerClick = useSetAnswer(question);
 
-	const title = generateTextWithPlaceholders(surveyAnswers, question.title, question.placeholders);
+	const title = generateTextWithPlaceholders(
+		surveyAnswers,
+		question.title,
+		question.placeholders
+	);
 	const description = question.description;
 
 	const sharedProps = {

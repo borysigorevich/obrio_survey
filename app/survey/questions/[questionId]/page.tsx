@@ -26,9 +26,7 @@ const Page = async ({ params }: Props) => {
 
 	if (!question) return redirect(`${routes.questions}/${surveyConfig.firstQuestionId}`);
 
-	return (
-			<RenderQuestion question={question as QuestionType} />
-	);
+	return <RenderQuestion question={question as QuestionType} />;
 };
 
 export default Page;

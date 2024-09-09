@@ -8,18 +8,20 @@ This is a [Next.js](https://nextjs.org/) project, configured to run in both `dev
 
 Ensure you have the following installed:
 
-- Node.js (v16 or higher)
-- npm, Yarn, pnpm, or bun (choose your package manager)
+-   Node.js (v16 or higher)
+-   npm, Yarn, pnpm, or bun (choose your package manager)
 
 ### Development Setup
 
 1. Clone the repository:
+
     ```bash
     git clone https://github.com/your-username/your-repo.git
     cd your-repo
     ```
 
 2. Install dependencies:
+
     ```bash
     npm install
     # or
@@ -29,6 +31,7 @@ Ensure you have the following installed:
     ```
 
 3. Start the development server:
+
     ```bash
     npm run dev
     # or
@@ -44,6 +47,7 @@ Ensure you have the following installed:
 ### Production Setup
 
 1. Install dependencies:
+
     ```bash
     npm install
     # or
@@ -53,6 +57,7 @@ Ensure you have the following installed:
     ```
 
 2. Build the application for production:
+
     ```bash
     npm run build
     # or

@@ -11,6 +11,7 @@ const Page = () => {
 	const router = useRouter();
 
 	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
+	const resetAnswers = useSurveyAnswersStore((state) => state.resetAnswers);
 
 	const resultArray = Object.entries(surveyAnswers);
 
@@ -30,6 +31,7 @@ const Page = () => {
 
 	const goToFirstQuestion = () => {
 		router.replace(`${routes.questions}/${surveyConfig.firstQuestionId}`);
+		resetAnswers();
 	};
 
 	return (

@@ -1,1 +1,1 @@
-export * from './session-storage-guard'
+export * from './session-storage-guard';

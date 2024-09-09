@@ -6,30 +6,29 @@ import { useRouter } from 'next/navigation';
 
 export type SetAnswerFnType = (answerId: string) => void;
 
-export const useSetAnswer = (
-	question: QuestionType
-) => {
+export const useSetAnswer = (question: QuestionType) => {
 	const surveyAnswers = useSurveyAnswersStore((state) => state.answers);
 	const setAnswer = useSurveyAnswersStore((state) => state.setAnswer);
 	const router = useRouter();
 
 	const handleSetAnswer: SetAnswerFnType = (answerId) => {
-
-		const needToSaveAnswer = question.screenType !== ScreenTypeEnum.Info
+		const needToSaveAnswer = question.screenType !== ScreenTypeEnum.Info;
 
 		needToSaveAnswer && setAnswer(question.id, answerId);
 		const currentQuestionAnswer = question.answers.find(
 			(answer) => answer.id === answerId
 		);
 
-		if(!currentQuestionAnswer) return;
+		if (!currentQuestionAnswer) return;
 
 		const nextQuestionId = getNextQuestionId({
 			currentQuestionAnswer,
 			surveyAnswers,
 		});
 
-		const path = question.isLastQuestion ? routes.results : `${routes.questions}/${nextQuestionId}`;
+		const path = question.isLastQuestion
+			? routes.results
+			: `${routes.questions}/${nextQuestionId}`;
 
 		router.push(path);
 	};
