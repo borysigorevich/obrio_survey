@@ -45,10 +45,7 @@ export const DefaultQuestion = ({
 					<ul className={'mt-[30px] grid gap-5'}>
 						{answers.map((answer) => (
 							<li key={answer.id} className={'w-full'}>
-								<Button
-									className={'w-full'}
-									onClick={() => handleAnswerClick(answer.id)}
-								>
+								<Button className={'w-full'} onClick={() => handleAnswerClick(answer.id)}>
 									{answer.title}
 								</Button>
 							</li>

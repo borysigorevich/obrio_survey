@@ -13,10 +13,12 @@ type SurveyAnswersStoreType = {
 
 export const useSurveyAnswersStore = create<SurveyAnswersStoreType>()(
 	persist(
-		(set, get) => ({
+		(set) => ({
 			answers: {},
 			setAnswer: (questionId, answer) =>
-				set((state) => ({ answers: { ...state.answers, [questionId]: answer } })),
+				set((state) => ({
+					answers: { ...state.answers, [questionId]: answer },
+				})),
 			resetAnswers: () => set({ answers: {} }),
 		}),
 		{

@@ -24,10 +24,7 @@ export const WhiteLogo = ({ onClick }: WhiteLogoProps) => {
 					width="1"
 					height="1"
 				>
-					<use
-						xlinkHref="#image0_3430_316"
-						transform="scale(0.00239445 0.00217391)"
-					/>
+					<use xlinkHref="#image0_3430_316" transform="scale(0.00239445 0.00217391)" />
 				</pattern>
 				<image
 					id="image0_3430_316"

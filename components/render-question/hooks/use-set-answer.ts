@@ -1,6 +1,6 @@
 import { routes } from '@/routes';
 import { getNextQuestionId } from '../utils';
-import { QuestionAnswerType, QuestionType, ScreenTypeEnum } from '@/configs/surveyConfig';
+import { QuestionType, ScreenTypeEnum } from '@/configs/surveyConfig';
 import { useSurveyAnswersStore } from '@/store/survey-answers-store';
 import { useRouter } from 'next/navigation';
 

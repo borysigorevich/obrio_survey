@@ -1,6 +1,5 @@
 import { RenderQuestion } from '@/components/render-question';
 import { QuestionType, surveyConfig } from '@/configs/surveyConfig';
-import { SessionStorageGuard } from '@/guards/session-storage-guard';
 import { routes } from '@/routes';
 import { redirect } from 'next/navigation';
 import React from 'react';

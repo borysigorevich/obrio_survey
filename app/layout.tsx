@@ -2,6 +2,7 @@ import { SessionStorageGuard } from '@/guards/session-storage-guard';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import './globals.css';
+import React from 'react';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 

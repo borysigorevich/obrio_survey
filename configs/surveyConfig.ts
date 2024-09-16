@@ -77,7 +77,11 @@ export const surveyConfig: SurveyConfigType = {
 			screenType: ScreenTypeEnum.Default,
 			answers: [
 				{ id: 'q2_a1', title: 'Single', nextQuestionId: 'q3' },
-				{ id: 'q2_a2', title: 'In a relationship', nextQuestionId: 'q4' },
+				{
+					id: 'q2_a2',
+					title: 'In a relationship',
+					nextQuestionId: 'q4',
+				},
 			],
 			required: true,
 		},
@@ -108,7 +112,8 @@ export const surveyConfig: SurveyConfigType = {
 		q5: {
 			id: 'q5',
 			parentQuestionId: 'q3',
-			title: '{Gender} {ChildrenStatus} need a slightly different approach to improve their relationship. Which statement best describes you?',
+			title:
+				'{Gender} {ChildrenStatus} need a slightly different approach to improve their relationship. Which statement best describes you?',
 			placeholders: {
 				Gender: {
 					source: 'q1',
@@ -135,7 +140,8 @@ export const surveyConfig: SurveyConfigType = {
 				},
 				{
 					id: 'q5_a2',
-					title: 'I’m unhappy with parts of my relationship, but some things are working well',
+					title:
+						'I’m unhappy with parts of my relationship, but some things are working well',
 					nextQuestionId: 'q7',
 				},
 				{
@@ -149,7 +155,8 @@ export const surveyConfig: SurveyConfigType = {
 		q6: {
 			id: 'q6',
 			parentQuestionId: 'q4',
-			title: 'Single {Gender} {ChildrenStatus} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?',
+			title:
+				'Single {Gender} {ChildrenStatus} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?',
 			placeholders: {
 				Gender: {
 					source: 'q1',
@@ -176,7 +183,8 @@ export const surveyConfig: SurveyConfigType = {
 				},
 				{
 					id: 'q6_a2',
-					title: 'I was unhappy with parts of my relationship, but some things were working',
+					title:
+						'I was unhappy with parts of my relationship, but some things were working',
 					nextQuestionId: 'q8',
 				},
 				{
@@ -282,11 +290,19 @@ export const surveyConfig: SurveyConfigType = {
 			questionType: QuestionTypeEnum.SingleChoice,
 			description: `"My partner and I make sex a priority in our relationship"`,
 			answers: [
-				{ id: 'q13_a1', title: 'Strongly agree', nextQuestionId: 'q14' },
+				{
+					id: 'q13_a1',
+					title: 'Strongly agree',
+					nextQuestionId: 'q14',
+				},
 				{ id: 'q13_a2', title: 'Agree', nextQuestionId: 'q14' },
 				{ id: 'q13_a3', title: 'Neutral', nextQuestionId: 'q14' },
 				{ id: 'q13_a4', title: 'Disagree', nextQuestionId: 'q14' },
-				{ id: 'q13_a5', title: 'Strongly disagree', nextQuestionId: 'q14' },
+				{
+					id: 'q13_a5',
+					title: 'Strongly disagree',
+					nextQuestionId: 'q14',
+				},
 			],
 			required: true,
 		},
@@ -322,8 +338,16 @@ export const surveyConfig: SurveyConfigType = {
 			screenType: ScreenTypeEnum.Default,
 			questionType: QuestionTypeEnum.SingleChoice,
 			answers: [
-				{ id: 'q15_a1', title: 'Poster or Billboard', nextQuestionId: 'end' },
-				{ id: 'q15_a2', title: 'Friend or Family', nextQuestionId: 'end' },
+				{
+					id: 'q15_a1',
+					title: 'Poster or Billboard',
+					nextQuestionId: 'end',
+				},
+				{
+					id: 'q15_a2',
+					title: 'Friend or Family',
+					nextQuestionId: 'end',
+				},
 				{ id: 'q15_a3', title: 'Instagram', nextQuestionId: 'end' },
 				{
 					id: 'q15_a4',
@@ -342,7 +366,11 @@ export const surveyConfig: SurveyConfigType = {
 					title: 'Search Engine (Google, Bing, etc.)',
 					nextQuestionId: 'end',
 				},
-				{ id: 'q15_a9', title: 'Newspaper or Magazine', nextQuestionId: 'end' },
+				{
+					id: 'q15_a9',
+					title: 'Newspaper or Magazine',
+					nextQuestionId: 'end',
+				},
 				{ id: 'q15_a10', title: 'Facebook', nextQuestionId: 'end' },
 				{
 					id: 'q15_a11',

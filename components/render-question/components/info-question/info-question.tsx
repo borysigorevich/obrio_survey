@@ -24,12 +24,8 @@ export const InfoQuestion = ({
 			<Header parentQuestionId={parentQuestionId} />
 			<main className={'py-4 text-typography-1 px-4 lg:px-0 text-center'}>
 				<div className={'w-full max-w-[328px] mx-auto'}>
-					<h1 className="text-2xl leading-[28px] font-bold text-typography-1">
-						{title}
-					</h1>
-					<p className="text-sm leading-[25.2px] mt-5 text-typography-1">
-						{description}
-					</p>
+					<h1 className="text-2xl leading-[28px] font-bold text-typography-1">{title}</h1>
+					<p className="text-sm leading-[25.2px] mt-5 text-typography-1">{description}</p>
 					<ul className={'grid gap-5 mt-10'}>
 						{answers.map((answer) => (
 							<li key={answer.id} className={'w-full'}>
